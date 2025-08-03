@@ -12,7 +12,8 @@ class Etablissement(models.Model):
     Photo_de_couverture = models.ImageField(upload_to='etablissements/couvertures/', blank=True, null=True)
     Description = models.TextField(blank=True)
     Horaire_ouverture = models.CharField(max_length=1000, blank=True)
-    Emplacement = models.CharField(max_length=255)  # Adresse ou coordonnées GPS
+    Emplacement = models.CharField(max_length=255)  
+    Active = models.BooleanField(default=True)
     created_at = models.DateTimeField(default=timezone.now)
     modify_at = models.DateTimeField(auto_now=True)
 

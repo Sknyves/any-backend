@@ -5,4 +5,12 @@ from .views import NourritureViewSet
 router = DefaultRouter()
 router.register(r'', NourritureViewSet, basename='nourritures')
 
-urlpatterns = router.urls
+additional_urls = [
+    path(
+        '<int:pk>/rate/',
+        NourritureViewSet.as_view({'post': 'rate'}),
+        name='nourriture-rate'
+    ),
+]
+
+urlpatterns = router.urls + additional_urls

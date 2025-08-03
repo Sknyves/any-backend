@@ -11,6 +11,12 @@ class EtablissementViewSet(viewsets.ModelViewSet):
     serializer_class = EtablissementSerializer
     permission_classes = [IsProprietaireOrReadOnly]
 
+    def get_serializer_context(self):
+        """Ajoute la requête au contexte du serializer"""
+        context = super().get_serializer_context()
+        context['request'] = self.request
+        return context
+
     def perform_create(self, serializer):
         serializer.save(IdUser=self.request.user)
 
